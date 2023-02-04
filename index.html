@@ -82,11 +82,24 @@
       Will Notify!
     </div>
   </div>
-  <script>
-    function showMessage() {
-      document.querySelector(".form-message").style.display = "block";
-      return false;
-    }
-  </script>
+  <div id="message" style="display:none;">Will Notify</div>
+
+<script>
+  const form = document.getElementById('myform');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://formspree.io/f/mayzqgdz', true);
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        document.getElementById('message').style.display = 'block';
+        form.style.display = 'none';
+      }
+    };
+    xhr.send(JSON.stringify({ email: form.elements.email.value }));
+  });
+</script>
 </body>
 </html>
