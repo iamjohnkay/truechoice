@@ -59,21 +59,34 @@
     button[type="submit"]:hover {
       background-color: #444;
     }
+
+    .form-message {
+      font-size: 18px;
+      margin-top: 40px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Truechoice - The Ultimate Vehicle Reselling App</h1>
     <p>Discover the easiest and most convenient way to sell your used vehicles with Truechoice. Our app makes the entire process of selling your vehicle hassle-free and quick. With Truechoice, you can reach a wider audience and get the best value for your vehicle.</p>
-    <form action="https://formspree.io/f/mayzqgdz" method="POST">
+    <form action="https://formspree.io/f/mayzqgdz" method="POST" onsubmit="return showMessage()">
       <label>
         Your email:
         <input type="email" name="email">
       </label>
       <button type="submit">Get Updates</button>
     </form>
+    <div class="form-message">
+      Will Notify!
+    </div>
   </div>
+  <script>
+    function showMessage() {
+      document.querySelector(".form-message").style.display = "block";
+      return false;
+    }
+  </script>
 </body>
 </html>
-
-
